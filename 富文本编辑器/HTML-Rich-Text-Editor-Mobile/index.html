@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0,user-scalable=no">
+  <title>富文本编辑器</title>
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <!-- include summernote css/js -->
+  <!-- css文件报错，所以直接用cdn -->
+  <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+  <script src="./js/rem.js"></script>
+</head>
+<script src="./js/JSBridge.js"></script>
+<script src="./js/jquery-3.4.1.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+<script src="./js/summernote.min.js"></script>
+<style>
+  .note-editor {
+    margin: 0;
+  }
+
+  .note-popover,
+  .note-control-selection {
+    display: none !important;
+  }
+
+  .done {
+    position: absolute;
+    right: 1rem;
+    top: 1.1rem;
+    width: 6rem;
+    height: 3.7rem;
+    border: .06rem solid;
+    border-radius: .5rem;
+    text-align: center;
+    line-height: 3.7rem;
+  }
+
+  .pic {
+    /* position: absolute;
+    left: 6rem;
+    top: .8rem;
+    width: 6rem;
+    height: 3.8rem;
+    border: .06rem solid;
+    border-radius: .5rem;
+    text-align: center;
+    line-height: 3.8rem;
+    background: #fff; */
+
+    position: absolute;
+    left: 6rem;
+    top: 1.1rem;
+    width: 6.5rem;
+    height: 3.7rem;
+    border: .06rem solid;
+    border-radius: .5rem;
+    text-align: center;
+    line-height: 3.7rem;
+    background: #fff;
+    font-size: 1.9rem;
+
+  }
+
+  .panel-heading {
+    height: 6rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .note-btn-group {
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .toast {
+    background: rgba(0, 0, 0, .1);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: none;
+  }
+  .toast .txt{
+    background: rgba(0, 0, 0, .3);
+    width: auto;
+    height: auto;
+    position: fixed;
+    left: 50%;
+    top: 42%;
+    padding: .5rem 2rem;
+    border-radius: .5rem;
+    font-size: 2.2rem;
+    transform: translate(-50%, -50%);
+  }
+
+  img {
+    width: 90%;
+    margin-right: 10%
+  }
+</style>
+
+<body>
+  <div id="summernote"></div>
+  <div class="done" onclick="done()">完成</div>
+  <!-- <img src="" alt="" class="pic"> -->
+  <div class="pic" onclick="getPic()">图片</div>
+  <div class="toast">
+    <div class="txt"></div>
+  </div>
+</body>
+
+<script type="text/javascript">
+  let msg
+  /*
+    $('#summernote').summernote('code')  获取富文本内数据
+    $('#summernote').summernote('code', markupStr) 编辑时赋值给富文本  markupStr 为字符串内容数据
+    
+    参考地址
+      A  https://blog.csdn.net/xixiyuguang/article/details/104791983
+      B  https://blog.csdn.net/qq_42462656/article/details/106023737
+      C  https://blog.csdn.net/wqlove520/article/details/96331111
+      D  下载gitHub地址 https://github.com/summernote/summernote/releases
+      E  gitHub https://github.com/summernote/summernote
+      F  官网 https://summernote.org
+  */
+  $(document).ready(function () {
+    $('#summernote').summernote({
+      lang: 'zh-CN',//语言
+      placeholder: '请输入内容', // 提示 
+      height: '92vh',//高度
+      width: 'auto',//宽度
+      toolbar: [//工具栏配置
+        ['style', ['bold']],//加粗、斜体、下划线
+        // ['picture'],//链接、图片
+        // ['codeview', ['codeview']],//查看html代码
+      ],
+      callbacks: { // 回调函数
+        // 上传图片时使用的回调函数
+        //   onImageUpload: file => {
+        //     const formData = new FormData()
+        //     let f = file[0]
+        //     formData.append('file', f)
+        //     console.log(f, formData);
+        //     $.ajax({
+        //       type: "POST", // 数据提交类型
+        //       url: "https://testmallapi.klzhibo.com/mall/upload.do?token=&time=&sign=", // 发送地址
+        //       data: formData, //发送数据
+        //       datatype: 'json',
+        //       async: true, // 是否异步
+        //       processData: false, //processData 默认为false，当设置为true的时候,jquery ajax 提交的时候不会序列化 data，而是直接使用data
+        //       contentType: 'application/json;charset=UTF-8',
+        //       success: function (result) {
+        //         console.log(result);
+        //       },
+        //       error: function (err) {
+        //         console.log(err);
+        //       },
+        //     })
+        //   }
+      }
+    })
+    console.log(window.location.href)
+    let url = window.location.href
+    // let url = 'http://localhost:3000/?msg=%3Cp%3E%3Cbr%3E%3C%2Fp%3E%3Cimg%20src%3D%22https%3A%2F%2Fwww.baidu.com%2Fimg%2Fflexible%2Flogo%2Fpc%2Fresult%402.png%22%20alt%3D%22%22%3E%3Cimg%20src%3D%22https%3A%2F%2Fwww.baidu.com%2Fimg%2Fflexible%2Flogo%2Fpc%2Fresult%402.png%22%20alt%3D%22%22%3E%3Cimg%20src%3D%22https%3A%2F%2Fwww.baidu.com%2Fimg%2Fflexible%2Flogo%2Fpc%2Fresult%402.png%22%20alt%3D%22%22%3Eaaa'
+
+    if (url.slice(url.length - 2, url.length) === '#/') url = url.slice(0, url.length - 2)
+    if (url.split('?')[1]) {
+      let params = url.split('?')[1].split('&')
+      for (let item of params) {
+        let arr = item.split('=')
+        switch (arr[0]) {
+          case 'msg':
+            msg = arr[1] || null
+            continue
+            msg = ''
+            continue
+        }
+      }
+    }
+    if (msg) $('#summernote').summernote('code', decodeURIComponent(msg))
+    // $('#summernote').summernote('code', $('#summernote').summernote('code') + 'markupStr')
+  })
+  function done() {
+    if ($('#summernote').summernote('isEmpty')) return showToast('请填写内容')
+    console.log(encodeURIComponent($('#summernote').summernote('code')))
+    window.setupWebViewJavascriptBridge((bridge) => {
+      bridge.callHandler('closePage', encodeURIComponent($('#summernote').summernote('code')), (result) => {
+        console.log('closePage success', 'code msg:', encodeURIComponent($('#summernote').summernote('code')))
+      })
+    })
+  }
+  function getPic() {
+    window.setupWebViewJavascriptBridge((bridge) => {
+      bridge.callHandler('getPic', null, (result) => {
+        console.log('getPic success')
+        $('#summernote').summernote('code', $('#summernote').summernote('code') + `<img src="${result}" alt="">`)
+      })
+    })
+  }
+
+  function showToast(txt) {
+    $('.toast')[0].style.display = 'block'
+    $('.txt')[0].innerText = txt
+    let timer = setTimeout(() => {
+      $('.toast')[0].style.display = 'none'
+      $('.txt')[0].innerText = ''
+      clearTimeout(timer)
+    }, 1500);
+  }
+</script>
+
+
+</html>

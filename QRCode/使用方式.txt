@@ -1,0 +1,7 @@
+基础 https://www.runoob.com/w3cnote/javascript-qrcodejs-library.html
+
+React  https://www.jianshu.com/p/92d5a778d964
+
+Vue  https://www.cnblogs.com/zouwangblog/p/11141125.html
+     https://github.com/song776158074/vue-qrcode
+  
