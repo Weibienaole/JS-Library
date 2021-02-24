@@ -5,6 +5,9 @@ import { createStore } from 'redux'
 import './index.css'
 import App from './App'
 
+// 兼容Android9以下机型
+import 'babel-polyfill'
+
 
 /**
  * 使用 JSBridge 总结：
