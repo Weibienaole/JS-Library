@@ -27,5 +27,5 @@ appMethods(name, data).then(res=>{
  * wxClientShare - 小程序分享 参数可以不传 如果传的话同上
  * closePage - 关闭H5页面
  * addVideo - 选择视频 参数配置：{type: Number} 1 -> 海选 其余待定
- * sharePoster - 分享海报  参数为一个H5的地址
+ * sharePoster - 分享海报  参数为一个对象，内部参数app定义
  */
