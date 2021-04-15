@@ -101,7 +101,6 @@ function add0(m){return m<10?'0'+m:m }
 export function format(time) {
   //shijianchuo是整数，否则要parseInt转换
   var time = new Date(time);
-  console.log(time)
   var y = time.getFullYear();
   var m = time.getMonth() + 1;
   var d = time.getDate();
