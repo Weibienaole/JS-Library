@@ -4,7 +4,7 @@ import { devtools } from 'zzy-javascript-devtools'
 
 // 移动端显示vConsole
 import vConsoleLog from '../../node_modules/vconsole/dist/vconsole.min.js'
-if (process.env.REACT_APP_ENV === 'test') {
+if (process.env.REACT_APP_ENV === 'dev') {
   const selfLog = new vConsoleLog()
 }
 function request({ u, data = {}, token = null }) {

@@ -4,7 +4,7 @@ import { devtools } from 'zzy-javascript-devtools'
 
 import './index.css'
 import request from '../../utils/request'
-class PagePage extends Component {
+class Page extends Component {
   constructor(props) {
     super(props)
     this.state = {}
@@ -48,4 +48,4 @@ function Page() {
 }
 */
 
-export default withRouter(PagePage)
+export default withRouter(Page)
