@@ -2,11 +2,6 @@ import axios from 'axios'
 import { Toast } from 'antd-mobile'
 import { devtools } from 'zzy-javascript-devtools'
 
-// 移动端显示vConsole
-import vConsoleLog from '../../node_modules/vconsole/dist/vconsole.min.js'
-if (process.env.REACT_APP_ENV === 'dev') {
-  const selfLog = new vConsoleLog()
-}
 function request({ u, data = {}, token = null }) {
   Toast.loading('加载中...', 30, () => {
     Toast.hide()

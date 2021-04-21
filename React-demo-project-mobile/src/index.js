@@ -41,7 +41,7 @@ devtools.appMethod(name, data).then(res=>{
 devtools.setDomRem(8)
 
 
-if(process.env.REACT_APP_ENV === 'prod') console.log = function(){}
+if(process.env.REACT_APP_ENV === 'production') console.log = function(){}
 
 
 
