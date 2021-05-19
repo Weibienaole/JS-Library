@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "babel": "./node_modules/.bin/babel src --copy-files --out-dir lib --presets=@babel/env,@babel/preset-react",
+    "babel_t": "./node_modules/.bin/babel test/aaa --copy-files --out-dir lib --presets=@babel/env,@babel/preset-react",
     "minfiles": "node ./command/uglifyjs.js",
     "clear_lib": "node ./command/clear.js"
   },

@@ -1,7 +1,7 @@
 const fs = require('fs');
 const UglifyJS = require('uglify-js');
 const getFiles = require('./getFiles')
-const noCompress = [] // 不需要压缩的文件名称
+const noCompress = ['.less'] // 不需要压缩的文件名称
 
 // .css 文件手动压缩
 function iGetInnerText(testStr) {
