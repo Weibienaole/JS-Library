@@ -1,7 +1,45 @@
 const fs = require('fs');
+const path = require('path')
 const UglifyJS = require('uglify-js');
 const getFiles = require('./getFiles')
 const noCompress = ['.less'] // 不需要压缩的文件名称
+
+/*
+  导入主文件
+  获取所有导出值
+  利用fs遍历生成新文件
+  新建一个外部index，将所有遍历生成的文件引入其中   动态模版生成？
+*/
+class DemandLoading {
+  constructor(path) {
+    this.path = path
+    this.indexJs = ''
+    this.init()
+  }
+  init() {
+    const files = getFiles(this.path)
+    // 拿到当前文件夹下的所有文件
+    for (let file of files) {
+      // 获取文件内的所有导出
+      let fileExportFn = require(file.path)
+      let dirName = file.fileName.split('.')[0]
+      // 写入文件夹
+      try {
+        fs.mkdirSync(path.resolve(__dirname, `../DL/${dirName}`))
+      } catch {}
+      // 遍历生成新文件
+      this.mkFile(fileExportFn, dirName)
+    }
+  }
+  // 遍历生成新文件
+  mkFile(fileExportFn, dirName) {
+    for (let i in fileExportFn) {
+      let exportFn = fileExportFn[i]
+      let filePath = path.resolve(__dirname, `../DL/${dirName}/`) + '/' + i + '.js'
+      fs.writeFileSync(filePath, 'module.exports=' + exportFn, 'utf-8')
+    }
+  }
+}
 
 // .css 文件手动压缩
 function iGetInnerText(testStr) {
@@ -46,7 +84,9 @@ function setFiles(pathTo) {
 }
 
 let Uglify = function (toPath) {
+  // new DemandLoading(path.resolve(__dirname, '../lib_t'))
   writefs(setFiles(toPath));
 }
 
 Uglify('./lib');
+// Uglify('./lib_t');

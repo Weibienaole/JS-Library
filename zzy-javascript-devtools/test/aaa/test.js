@@ -1,7 +1,7 @@
-function asd(a, b){
+export function asd(a, b){
   // 11111
   return a + b
 }
-let c
-let d = asd(1,2)
-console.log(a, b, d)
+export function fn2(){
+  console.log('i am fn2');
+}
