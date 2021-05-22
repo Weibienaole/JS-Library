@@ -22,6 +22,10 @@ devtools.bottomVisible() // false
 
 ## 版本更新历史
 
+- 1.3.5
+  - 修复topBar 组件 状态异常
+- 1.3.4
+  - 遗漏bug
 - 1.3.3
   - lib 删除 .less 文件
 - 1.3.2

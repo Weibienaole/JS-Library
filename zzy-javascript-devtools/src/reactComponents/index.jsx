@@ -148,14 +148,14 @@ class TopBar extends Component {
         )}
         <span
           className="topBarTil"
-          style={{ color: this.props.type === '0' ? '#000' : '#fff' }}
+          style={{ color: this.props.type == '0' ? '#000' : '#fff' }}
         >
           {this.props.title}
         </span>
         {this.props.rigTxt && (
           <span
             className="rigTxt"
-            style={{ color: this.props.type === '0' ? '#000' : '#fff' }}
+            style={{ color: this.props.type == '0' ? '#000' : '#fff' }}
             onClick={() => this.props.clickRigTxt()}
           >
             {this.props.rigTxt}
