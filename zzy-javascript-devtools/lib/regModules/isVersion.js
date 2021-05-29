@@ -1,0 +1,1 @@
+export default function isVersion(t){return/^\d+(?:\.\d+){2}$/g.test(t)}

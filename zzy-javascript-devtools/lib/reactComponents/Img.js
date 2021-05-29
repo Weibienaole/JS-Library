@@ -1,0 +1,1 @@
+import React,{Component}from"react";export default function Img(t){var e=t.className,a=t.src,c=t.click;return React.createElement("img",{onClick:function(){return c&&c()},src:"","data-src":(null==a?void 0:a.default)||a,alt:"",className:e})}

@@ -12,18 +12,35 @@ npm i zzy-javascript-devtools
 
 ```javascript
 import { regModules, devtools, ReactComponents } from 'zzy-javascript-devtools'
+import { isPhone, bottomVisible, Img } from 'zzy-javascript-devtools' // 按需加载
 
 // regModules 为正则模块  devtools 为方法模块  ReactComponents 为 React组件  JSBridge 为 JS&app交互事件
 // example：
 regModules.isPhone(13412341234) // true
+isPhone(13412341234) // true
+
 devtools.bottomVisible() // false
+bottomVisible() // false
+
 <ReactComponents.Img></ReactComponents.Img>
+<Img></Img>
 ```
 
 ## 版本更新历史
 
+- 1.4.0
+  - 此版本开始，zzy-javascript-devtools 实现按需加载😎
+    - 按需加载将保证向下版本兼容的同时实现按需加载(依旧可以用 devtools.bottomVisible() 方式来进行使用)
+    - 由于按需加载的实现导致某些方法需要更改，如果您在使用时发现了异常请及时联系作者(E-mail: weibienaole@163.com)
+  - reactComponents 组件类
+    - 部分组件的样式以style形式写入(原.css,这样就不会导致部分 webpack exclude 之后报错，或者警告)
+    - ScrollLoadingBar 组件由于按需加载模式，进行了必要的更改，详情请在下方查看
+  - 需要声明的一点是，由于按需加载的实现方式是利用了 tree shaking，所以内部都是ES6的导入导出，使用前需要清楚是否存在兼容性问题(使用 @babel/preset-env 进行了转化(modules: false)，但没有使用 core-js )
+  - 目前来看的话，prod压缩后大小减少了 10% - 30% 左右，虽然目前不太明显，但这个模式对未来无疑是非常有利的，所以不用失望😉
+- 1.3.6
+  - 修复 Img 组件 某些情况下 .default 报错
 - 1.3.5
-  - 修复topBar 组件 状态异常
+  - 修复 TopBar 组件 状态异常
 - 1.3.4
   - 遗漏bug
 - 1.3.3
@@ -247,12 +264,6 @@ const comments1 = [
 - 该参数接受一个正确的 url 地址
 - 返回一个对象 {参数名: 对应的值, ...}
 
-###### uploadImage({url, file})
-
-- 上传文件
-- 该参数接受一个对象，包含 请求地址，目标文件
-- 以 Promise 的形式返回值
-
 ###### setDomRem(num)
 
 - rem.js
@@ -326,15 +337,14 @@ methods:{
    @param {目标节点} dom 是一个在最底层的div，wid=0 hei=0 opac=0
    @param {Function} cb  callback 回调函数
    @param {可选：关闭监听(只有在监听滚动条时才会有效，否则无效，可忽略(针对低版本浏览器启用监听滚动条方式进行处理))} 
-   devtools.infinityScrolling.closeMonitor()
    */
 
 // example:
-devtools.infinityScrolling(document.querySelector('.bottomScrollBar'), () => {
+infinityScrolling(document.querySelector('.bottomScrollBar'), () => {
   // 回调第一行必须设置 infinityScrolling 的bol 属性为 false，意味着已经进程已经开始，必须等待结束(失败或者成功)才可以重新为true，才可以进行下一次的回调触发
-  devtools.infinityScrolling.open = false
+  infinityScrolling.open = false
   //  ...some code
-  devtools.infinityScrolling.open = true // done
+  infinityScrolling.open = true // done
 })
 ```
 
@@ -373,7 +383,7 @@ devtools.infinityScrolling(document.querySelector('.bottomScrollBar'), () => {
  * @param {String} name 事件名
  * @param {any} data 参数 - 仅有调app事件持有
  */
-devtools.JSB_appMethod(name, data).then((res) => {
+JSB_appMethod(name, data).then((res) => {
   // ... some code
 })
 ```
@@ -387,7 +397,7 @@ devtools.JSB_appMethod(name, data).then((res) => {
 /**
  * @param {String} name 事件名
  */
-devtools.JSB_jsMethod(name).then((res) => {
+JSB_jsMethod(name).then((res) => {
   /**
    * name: 事件名
    */
@@ -396,26 +406,28 @@ devtools.JSB_jsMethod(name).then((res) => {
 #####
 
 - 这个交互事件必须由 app 和前端一起去处理，单方面是无法成功的
-  可以参考我的这篇文章： https://blog.csdn.net/weixin_44205605/article/details/106985069
+  可以参考这篇文章： https://blog.csdn.net/zgd826237710/article/details/95518433
 
 ### ReactComponents
 
 ##### 无限滚动触发块(搭载 devtools.infinityScrolling) ScrollLoadingBar
 
 - 低版本使用 scroll 监听处理时自带 100ms 节流
-- 需要在触发事件内结束时 赋值 devtools.infinityScrolling.bol = true 代表本次事件结束，可以进行下一次触发
+- 需要在触发事件内开始时，getDataBol 为 false，表示数据获取进行中，等待接口数据返回，有值则 getDataBol 为 true，反之为 false
 
 ```javascript
 /**
  * props:
  * @param {Function} getMoreData 链接到触发事件
+ * @param {Boolean} getDataBol 是否进行下一次判定(有值的话true)
  * */
 
 // example:
-import { ReactComponents } from 'zzy-javascript-devtools';
-<ReactComponents.ScrollLoadingBar
+import { ScrollLoadingBar } from 'zzy-javascript-devtools';
+<ScrollLoadingBar
   getMoreData={() => this.getData()}
-></ReactComponents.ScrollLoadingBar>
+  getDataBol={this.state.dataMoreBol}
+></ScrollLoadingBar>
 ```
 
 ##### 错误边界 ErrorBoundary
@@ -425,11 +437,11 @@ import { ReactComponents } from 'zzy-javascript-devtools';
 - 无法捕获 事件处理，异步代码等错误
 
 ```javascript
-import { ReactComponents } from 'zzy-javascript-devtools';
-<ReactComponents.ErrorBoundary>
+import { ErrorBoundary } from 'zzy-javascript-devtools';
+<ErrorBoundary>
   // 包裹住 Route
   <Route />
-</ReactComponents.ErrorBoundary>
+</ErrorBoundary>
 ```
 
 ##### 懒加载图片标签(配合 devtools.lazyImage() 方法使用) Img
@@ -445,12 +457,12 @@ import { ReactComponents } from 'zzy-javascript-devtools';
  */
 
 // example:
-import { ReactComponents } from 'zzy-javascript-devtools';
-<ReactComponents.Img
+import { Img } from 'zzy-javascript-devtools';
+<Img
   src="link"
   className="className"
   click={() => console.log('click!')}
-></ReactComponents.Img>
+></Img>
 ```
 
 ##### 无数据显示组件 NoData
@@ -463,12 +475,12 @@ import { ReactComponents } from 'zzy-javascript-devtools';
  * */
 
 // example
-import { ReactComponents } from 'zzy-javascript-devtools';
-<ReactComponents.NoData
+import { NoData } from 'zzy-javascript-devtools';
+<NoData
   say={'asasasas'}
   style={{ width: '16.25rem', height: '15.69rem' }}
   src={require('./image/noData.png')}
-></ReactComponents.NoData>
+></NoData>
 ```
 
 ##### 顶部栏(kl 标准) TopBar
@@ -489,12 +501,12 @@ import { ReactComponents } from 'zzy-javascript-devtools';
  * */
 
 // example:
-import { ReactComponents } from 'zzy-javascript-devtools';
-<ReactComponents.TopBar
+import { TopBar } from 'zzy-javascript-devtools';
+<TopBar
   type="0"
   title="i am title"
   rigTxt="iam rigTxt"
   arrowBack={() => this.back()}
   clickRigTxt={() => this.secrch()}
-></ReactComponents.TopBar>
+></TopBar>
 ```

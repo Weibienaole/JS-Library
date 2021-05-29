@@ -1,0 +1,1 @@
+export default function formatFileSize(e){return e<1024?e+"B":e<1048576?(e/1024).toFixed(2)+"KB":e<1073741824?(e/1048576).toFixed(2)+"MB":(e/1073741824).toFixed(2)+"GB"}

@@ -1,6 +1,5 @@
-class RegModules {
   // 身份证
-  isIdCard(idCard) {
+  export function isIdCard(idCard) {
     if (typeof idCard === 'number') idCard = parseFloat(idCard) || String(idCard)
     idCard = idCard.trim()
     function validateIdCard(idCard) {
@@ -230,121 +229,118 @@ class RegModules {
     return validateIdCard(idCard)
   }
   // 验证护照（包含香港、澳门）
-  isPassport(val) {
+  export function isPassport(val) {
     return /(^[EeKkGgDdSsPpHh]\d{8}$)|(^(([Ee][a-fA-F])|([DdSsPp][Ee])|([Kk][Jj])|([Mm][Aa])|(1[45]))\d{7}$)/g.test(val)
   }
   // 手机号
-  isPhone(phone) {
+  export function isPhone(phone) {
     return /^1(3\d|4\d|5\d|6\d|7\d|8\d|9\d)\d{8}$/g.test(phone)
   }
   // 验证手机号中国(严谨), 根据工信部2019年最新公布的手机号段
-  isPhoneStrict(phone) {
+  export function isPhoneStrict(phone) {
     return /^(?:(?:\+|00)86)?1(?:(?:3[\d])|(?:4[5-7|9])|(?:5[0-3|5-9])|(?:6[5-7])|(?:7[0-8])|(?:8[\d])|(?:9[1|8|9]))\d{8}$/g.test(phone);
   }
   // 验证座机电话(国内),如: 0341-86091234
-  isLandlineTelephone(phone) {
+  export function isLandlineTelephone(phone) {
     return /\d{3}-\d{8}|\d{4}-\d{7}/g.test(phone)
   }
   // 姓名
-  isName(name) {
+  export function isName(name) {
     let ChinaTxtReg = new RegExp('^[\u4e00-\u9fa5]+$')
     return ChinaTxtReg.test(name)
   }
   // 英文
-  isEnglish(val) {
+  export function isEnglish(val) {
     let reg = /^[a-zA-Z]+$/
     return reg.test(val)
   }
   // 整数
-  isInteger(val) {
+  export function isInteger(val) {
     let reg = /^[-+]?\d*$/
     return reg.test(val)
   }
   // 密码 a-z A-Z 0-9  long 6 < val < 21
-  isPassword(val) {
+  export function isPassword(val) {
     let reg = /^[a-zA-Z0-9_]+$/;
     return reg.test(val) && val.length > 5 && val.length < 21
   }
   // 邮件 email
-  isEmail(val) {
+  export function isEmail(val) {
     let reg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
     return reg.test(val)
   }
   // 地址 链接
-  isUrl(val) {
+  export function isUrl(val) {
     const str = "^((https|http|ftp|rtsp|mms)://)?[a-z0-9A-Z]{3}\.[a-z0-9A-Z][a-z0-9A-Z]{0,61}?[a-z0-9A-Z]\.com|net|cn|cc (:s[0-9]{1-4})?/$";
     const reg = new RegExp(str);
     return reg.test(val)
   }
   // 价格、金额  带小数的正数，小数点后最多两位
-  isMoney(val) {
+  export function isMoney(val) {
     const reg = /^(([1-9][0-9]*)|(([0]\.\d{1,2}|[1-9][0-9]*\.\d{1,2})))$/;
     return reg.test(val)
   }
   // 验证邮政编码(中国)
-  isPostcode(val) {
+  export function isPostcode(val) {
     return /^(0[1-7]|1[0-356]|2[0-7]|3[0-6]|4[0-7]|5[1-7]|6[1-7]|7[0-5]|8[013-6])\d{4}$/g.test(val)
   }
   // 验证微信号，6至20位，以字母开头，字母，数字，减号，下划线
-  isWeChatNum(val) {
+  export function isWeChatNum(val) {
     return /^[a-zA-Z][-_a-zA-Z0-9]{5,19}$/g.test(val);
   }
   // 验证16进制颜色
-  isColor16(val) {
+  export function isColor16(val) {
     return /^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/g.test(val);
   }
   // 验证火车车次
-  isTrainNum(val) {
+  export function isTrainNum(val) {
     return /^[GCDZTSPKXLY1-9]\d{1,4}$/g.test(val);
   }
   // 验证手机机身码(IMEI)
-  isIMEI(val) {
+  export function isIMEI(val) {
     return /^\d{15,17}$/g.test(val)
   }
   // 验证必须带端口号的网址(或ip)
-  isHttpAndPort(val) {
+  export function isHttpAndPort(val) {
     return /^((ht|f)tps?:\/\/)?[\w-]+(\.[\w-]+)+:\d{1,5}\/?$/g.test(val)
   }
   // 验证统一社会信用代码
-  isCreditCode(val) {
+  export function isCreditCode(val) {
     return /^[0-9A-HJ-NPQRTUWXY]{2}\d{6}[0-9A-HJ-NPQRTUWXY]{10}$/g.test(val)
   }
   // 验证迅雷链接
-  isThunderLink(val) {
+  export function isThunderLink(val) {
     return /^thunderx?:\/\/[a-zA-Z\d]+=$/g.test(val);
   }
   // 验证window"文件夹"路径
-  isWindowsFolderPath(val) {
+  export function isWindowsFolderPath(val) {
     return /^[a-zA-Z]:\\(?:\w+\\?)*$/g.test(val);
   }
   // 验证window下"文件"路径
-  isWindowsFilePath(val) {
+  export function isWindowsFilePath(val) {
     return /^[a-zA-Z]:\\(?:\w+\\)*\w+\.\w+$/g.test(val);
   }
   // 验证版本号格式必须为X.Y.Z
-  isVersion(val) {
+  export function isVersion(val) {
     return /^\d+(?:\.\d+){2}$/g.test(val);
   }
   // 验证视频链接地址（视频格式可按需增删）
-  isVideoUrl(val) {
+  export function isVideoUrl(val) {
     return /^https?:\/\/(.+\/)+.+(\.(swf|avi|flv|mpg|rm|mov|wav|asf|3gp|mkv|rmvb|mp4))$/i.test(val);
   }
   // 验证图片链接地址（图片格式可按需增删）
-  isImageUrl(val) {
+  export function isImageUrl(val) {
     return /^https?:\/\/(.+\/)+.+(\.(gif|png|jpg|jpeg|webp|svg|psd|bmp|tif))$/i.test(val);
   }
   // 验证银行卡号（10到30位, 覆盖对公/私账户, 参考微信支付）
-  isAccountNumber(val) {
+  export function isAccountNumber(val) {
     return /^[1-9]\d{9,29}$/g.test(val)
   }
   // 验证车牌号(新能源+非新能源)
-  isLicensePlateNumber(val) {
+  export function isLicensePlateNumber(val) {
     return /^(?:[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领 A-Z]{1}[A-HJ-NP-Z]{1}(?:(?:[0-9]{5}[DF])|(?:[DF](?:[A-HJ-NP-Z0-9])[0-9]{4})))|(?:[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领 A-Z]{1}[A-Z]{1}[A-HJ-NP-Z0-9]{4}[A-HJ-NP-Z0-9 挂学警港澳]{1})$/g.test(val);
   }
   // 判读是否为外链 
-  isExternal(path) {
+  export function isExternal(path) {
     return /^(https?:|mailto:|tel:)/.test(path);
   }
-}
-
-module.exports = RegModules

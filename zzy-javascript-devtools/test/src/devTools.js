@@ -1,4 +1,3 @@
-class DevTools {
   // 算法类
   // 根据数组生成树结构
   /*
@@ -10,13 +9,13 @@ class DevTools {
     { id: 5, parentId: 4 }
   ];
   */
-  generateTree(items, parentId = null, selectVal = 'parentId') {
+  export function generateTree(items, parentId = null, selectVal = 'parentId') {
     return items.filter(item => item[selectVal] === parentId).map(i => { return { ...i, children: this.generateTree(items, i.id, selectVal) } })
   }
 
   // 全等判断 ---> 在两个变量之间进行深度比较以确定它们是否全等。
   // allEquals({ a: [2, { e: 3 }], b: [4], c: 'foo' }, { a: [2, { e: 3 }], b: [4], c: 'foo' }); // true
-  allEquals(a, b) {
+  export function allEquals(a, b) {
     if (a === b) return true;
     if (a instanceof Date && b instanceof Date) return a.getTime() === b.getTime();
     if (!a || !b || (typeof a !== 'object' && typeof b !== 'object')) return a === b;
@@ -31,18 +30,18 @@ class DevTools {
 
   // 返回当前24小时制时间的字符串
   // getColonTimeFromDate3(new Date());
-  getColonTimeFromDate(date) {
+  export function getColonTimeFromDate(date) {
     return date.toTimeString().slice(0, 8);
   }
 
   // 返回日期间的天数
   // getDaysDiffBetweenDates4(new Date('2019-01-01'), new Date('2019-10-14'));
-  getDaysDiffBetweenDates(dateInitial, dateFinal) {
+  export function getDaysDiffBetweenDates(dateInitial, dateFinal) {
     return (dateFinal - dateInitial) / (1000 * 3600 * 24);
   }
 
   // 时间格式转化年 -- 接受 ms 级的时间戳
-  changeTimeYear(time) {
+  export function changeTimeYear(time) {
     time = parseInt(time) //将传入的时间戳的值转化为Number
     time = new Date(time);
     const year = time.getFullYear()
@@ -59,7 +58,7 @@ class DevTools {
   }
 
   // 格式化 天:时:分:秒 参数 - 剩余时间戳 - 单位为 S
-  formateSeconds(surPlusTime) {
+  export function formateSeconds(surPlusTime) {
     let secondTime = parseInt(surPlusTime) //将传入的秒的值转化为Number
     let min = 0 // 初始化分
     let h = 0 // 初始化小时
@@ -88,7 +87,7 @@ class DevTools {
     // return 00:00:00:00
   }
   // 时间戳转化为当前时间 
-  formatNowTime(time) {
+  export function formatNowTime(time) {
     function add0(m) { return m < 10 ? '0' + m : m }
     time = parseInt(time) //将传入的时间戳的值转化为Number
     time = new Date(time);
@@ -105,18 +104,18 @@ class DevTools {
   // browser
 
   // 检查页面底部是否可见
-  bottomVisible() {
+  export function bottomVisible() {
     return (document.documentElement.clientHeight + window.scrollY >=
       (document.documentElement.scrollHeight || document.documentElement.clientHeight))
   }
 
   // 检查当前标签页是否活动
-  isBrowserTabFocused() {
+  export function isBrowserTabFocused() {
     return !document.hidden;
   }
 
   // 平滑滚动至顶部 --> 该代码段可用于平滑滚动到当前页面的顶部。
-  scrollToTop() {
+  export function scrollToTop() {
     const c = document.documentElement.scrollTop || document.body.scrollTop;
     if (c > 0) {
       window.requestAnimationFrame(scrollToTop);
@@ -126,7 +125,7 @@ class DevTools {
 
   // 滚动到指定元素区域 --> 该代码段可将指定元素平滑滚动到浏览器窗口的可见区域。
   // smoothScroll11('#fooBar');
-  smoothScroll(el) {
+  export function smoothScroll(el) {
     document.querySelector(el).scrollIntoView({
       behavior: 'smooth'
     });
@@ -136,7 +135,7 @@ class DevTools {
   //  getScrollPosition(); // {x: 0, y: 200}
   // el 为选定 dom 默认 window
   // 返回 {x: , y: }
-  getScrollPosition(el = window) {
+  export function getScrollPosition(el = window) {
     return {
       x: el.pageXOffset !== undefined ? el.pageXOffset : el.scrollLeft,
       y: el.pageYOffset !== undefined ? el.pageYOffset : el.scrollTop
@@ -145,7 +144,7 @@ class DevTools {
 
   // 功能描述：一些业务场景，如弹框出现时，需要禁止页面滚动，这是兼容安卓和 iOS 禁止页面滚动的解决方案
   // 固定滚动条  接受一个y轴 Number
-  preventScroll(scrollNum) {
+  export function preventScroll(scrollNum) {
     // 存储当前滚动位置
     scrollNum = window.scrollY;
 
@@ -157,7 +156,7 @@ class DevTools {
     // document.body.style['overscroll-behavior'] = 'none'
   }
   // 恢复滚动条  接受一个y轴 Number  如果配合 preventScroll 方法使用需要现将 固定前的滚动条高度记录，再恢复时赋值给 recoverScroll 方法
-  recoverScroll(scrollNum) {
+  export function recoverScroll(scrollNum) {
     document.body.style["overflow-y"] = "auto";
     document.body.style.position = "static";
     // document.querySelector('body').style['overscroll-behavior'] = 'none'
@@ -170,7 +169,7 @@ class DevTools {
   // elementIsVisibleInViewport(el); // 需要左右可见
   // elementIsVisibleInViewport(el, true); // 需要全屏(上下左右)可以见
 
-  elementIsVisibleInViewport(el, partiallyVisible = false) {
+  export function elementIsVisibleInViewport(el, partiallyVisible = false) {
     const { top, left, bottom, right } = el.getBoundingClientRect();
     const { innerHeight, innerWidth } = window;
     return partiallyVisible
@@ -180,7 +179,7 @@ class DevTools {
   }
 
   // 某个元素开启全屏 接受一个 dom 作为参数
-  launchFullscreen(el) {
+  export function launchFullscreen(el) {
     if (el.requestFullscreen) {
       el.requestFullscreen()
     } else if (el.mozRequestFullScreen) {
@@ -193,7 +192,7 @@ class DevTools {
   }
 
   // 关闭全屏模式
-  exitFullscreen() {
+  export function exitFullscreen() {
     if (document.exitFullscreen) {
       document.exitFullscreen()
     } else if (document.msExitFullscreen) {
@@ -214,7 +213,7 @@ class DevTools {
     formToObject(document.querySelector('#form')); 
         { email: 'test@email.com', name: 'Test Name' }
   */
-  formToObject(form) {
+  export function formToObject(form) {
     return Array.from(new FormData(form)).reduce(
       (acc, [key, value]) => ({
         ...acc,
@@ -230,7 +229,7 @@ class DevTools {
     copyToClipboard('Lorem ipsum'); 
       'Lorem ipsum' copied to clipboard
   */
-  copyToClipboard(str) {
+  export function copyToClipboard(str) {
     const el = document.createElement('textarea');
     el.value = str;
     el.setAttribute('readonly', '');
@@ -249,11 +248,11 @@ class DevTools {
   }
 
   // 金钱格式化，三位加逗号
-  formatMoney(val) {
+  export function formatMoney(val) {
     return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
   }
   // B转换到KB,MB,GB并保留两位小数  参数接受一个 b 字节 为单位的值
-  formatFileSize(fileSize) {
+  export function formatFileSize(fileSize) {
     let temp;
     if (fileSize < 1024) {
       return fileSize + 'B';
@@ -275,7 +274,7 @@ class DevTools {
   // 去除空格
   // str 待处理字符串
   // type 去除空格类型 1-所有空格  2-前后空格  3-前空格 4-后空格 默认为1
-  strTrim(str, type = 1) {
+  export function strTrim(str, type = 1) {
     if (type && type !== 1 && type !== 2 && type !== 3 && type !== 4) return;
     switch (type) {
       case 1:
@@ -292,21 +291,21 @@ class DevTools {
   }
 
   // 检测移动/PC设备
-  detectDeviceType() {
+  export function detectDeviceType() {
     return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
       ? 'Mobile'
       : 'Desktop';
   }
 
   // 当前设备是否是 android
-  isAndroidPlatform() {
+  export function isAndroidPlatform() {
     const u = navigator.userAgent
     const isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1
     return isAndroid
   }
 
   // 获取地址栏参数
-  getUrlData(url) {
+  export function getUrlData(url) {
     if (url.slice(url.length - 2, url.length) === '#/') url = url.slice(0, url.length - 2)
     let o = {}
     let params = url.split('?')[1]
@@ -318,28 +317,8 @@ class DevTools {
     return o
   }
 
-  // 上传文件
-  uploadImage({ url, file }) {
-    let fromData = new FormData();
-    fromData.append('imgFile', file);
-    return new Promise((resolve, reject) => {
-      axios({
-        method: 'post',
-        url: url,
-        data: fromData,
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      }).then(res => {
-        resolve(res.data);
-      }).catch(e => {
-        reject(e)
-      })
-    })
-  }
-
   // rem*16px(以蓝湖rem设置为标准 设置16px的rem就是 *8)
-  setDomRem(num = 8) {
+  export function setDomRem(num = 8) {
     (function (designWidth, maxWidth) {
       var doc = document,
         win = window;
@@ -402,18 +381,18 @@ class DevTools {
   }
 
   // 不显示 console.log
-  rewirteLog() {
+  export function rewirteLog() {
     console.log = function () { }
   }
 
   // 增强版typeOf typeOf 关键字对于null，date 都会认为是Object，不准确
-  typeOf(data) {
+  export function typeOf(data) {
     let res = Object.prototype.toString.call(data).split(' ')[1]
     return res.slice(0, res.length - 1)
   }
 
   // 深拷贝
-  deepClone(target) {
+  export function deepClone(target) {
     let result;
     if (typeof target === 'object') {
       if (Array.isArray(target)) {
@@ -440,7 +419,7 @@ class DevTools {
   // 启用图片懒加载
   // 需要设置html中的img src为空，data-src属性为目标路径
   // 必须等待加载目标的 data-src 属性赋值完毕，再执行此方法
-  lazyImage(className = null) {
+  export function lazyImage(className = null) {
     // 懒记载图片列表，将伪数组转为数组，以便可以使用数组的api      
     let imageElements = Array.prototype.slice.call(className ? document.querySelectorAll(className) : document.getElementsByTagName('img')), _throttleFn
     // 只针对具有参数的值进行处理
@@ -514,7 +493,7 @@ class DevTools {
   }
 
   // 防抖 执行函数,间隔时间,是否立即执行一次
-  debounce(func, wait, immediate = true) {
+  export function debounce(func, wait, immediate = true) {
     var timeout, result;
     var debounced = function () {
       var context = this;
@@ -542,7 +521,7 @@ class DevTools {
   }
 
   // 节流 执行函数,间隔时间,设置{leading: 调用后是否立即执行一次,trailing: 结束后是否还要执行一次} 默认都为true，但都不能为false
-  throttle(func, wait, options) {
+  export function throttle(func, wait, options) {
     var timeout, context, args
     // 上一次的时间点
     var previous = 0
@@ -602,7 +581,7 @@ class DevTools {
    * devtools.infinityScrollIng.bol = true // done
    * })
    */
-  infinityScrolling(dom, cb) {
+   export function infinityScrolling(dom, cb) {
     const that = this
     this.infinityScrolling.bol = true
     let throttleFn
@@ -642,7 +621,7 @@ class DevTools {
 
   // 从字符串中删除HTML / XML标签。
   // deleteHTMLTags('<p><em>lorem</em> <strong class="asasasas">ipsum</strong></p>'
-  deleteHTMLTags(str) {
+  export function deleteHTMLTags(str) {
     return str.replace(/<[^>]*>/g, '')
   }
 
@@ -651,13 +630,13 @@ class DevTools {
 
   // 返回指定元素的生效样式
   // getDomStyle(document.querySelector('p'), 'font-size')
-  getDomStyle(el, ruleName) {
+  export function getDomStyle(el, ruleName) {
     return getComputedStyle(el)[ruleName];
   }
 
   // 与app相关的交互处理
   // 初始化
-  JSB_init() {
+  export function JSB_init() {
     /*
     html引入 - 直接引入
     框架引入 - 代码拷贝到入口文件 - react -> index.js
@@ -763,7 +742,7 @@ class DevTools {
       // 回调返回数据
     })
   */
-  JSB_appMethod(name, data = null) {
+  export function JSB_appMethod(name, data = null) {
     /**
      * name: 事件名
      * data: 参数 - 仅有调app事件持有
@@ -781,7 +760,7 @@ class DevTools {
   /**
    * name: 事件名
    */
-   JSB_jsMethod(name) {
+   export function JSB_jsMethod(name) {
     return new Promise(function (reslove, reject) {
       if (!window.setupWebViewJavascriptBridge) return reject('请先将 JSBriged.js 引入！')
       window.setupWebViewJavascriptBridge((bridge) => {
@@ -791,6 +770,3 @@ class DevTools {
       })
     })
   }
-}
-
-module.exports = DevTools
