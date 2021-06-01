@@ -1,5 +1,7 @@
 const fs = require('fs')
 const path = require('path')
+// 排除项
+const noSelect = ['.less', '.css']
 
 // 源路径  目标路径  目标文件夹(必须是源路径下一级的文件夹)
 function copyFiles(formPath, toPath, targetDir) {
@@ -18,7 +20,7 @@ function copyFiles(formPath, toPath, targetDir) {
     let childsDir = childs.filter(item => {
       isDir = fs.lstatSync(formPath + '/' + item).isDirectory()
       // 不是文件夹且后缀不为 .less .css
-      if (!isDir && path.extname(item) !== '.less' && path.extname(item) !== '.css') fs.copyFileSync(formPath + '/' + item, toPath + '/' + item);
+      if (!isDir && !noSelect.some(it => path.extname(item) === it)) fs.copyFileSync(formPath + '/' + item, toPath + '/' + item);
       return isDir
     })
     for (let i = 0; i < childsDir.length; i++) {

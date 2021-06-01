@@ -2,16 +2,12 @@ const fs = require('fs')
 
 
 function createDir(targetPath, toPath) {
-
   try {
     fs.mkdirSync(toPath)
   } catch { }
-
   getDir(targetPath, toPath)
   function getDir(path, toPath) {
-    console.log(path);
     let childs = fs.readdirSync(path)
-    console.log(childs);
     childs = childs.filter(item => {
       return fs.lstatSync(path + '/' + item).isDirectory()
     })
