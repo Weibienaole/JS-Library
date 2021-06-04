@@ -1,0 +1,1 @@
+export default function scrollToTop(){var o=document.documentElement.scrollTop||document.body.scrollTop;0<o&&(window.requestAnimationFrame(scrollToTop),window.scrollTo(0,o-o/8))}

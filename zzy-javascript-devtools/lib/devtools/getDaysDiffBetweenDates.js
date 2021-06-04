@@ -1,0 +1,1 @@
+export default function getDaysDiffBetweenDates(e,t){return(t-e)/864e5}

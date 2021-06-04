@@ -1,0 +1,1 @@
+export default function isIMEI(t){return/^\d{15,17}$/g.test(t)}
