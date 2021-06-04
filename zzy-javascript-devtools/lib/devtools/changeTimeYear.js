@@ -1,1 +1,0 @@
-export default function changeTimeYear(e){e=parseInt(e);var t=(e=new Date(e)).getFullYear(),a=e.getMonth()+1,e=e.getDate();return t+"-"+(10<=a?a:"0"+a)+"-"+(10<=e?e:"0"+e)+" "}

@@ -1,1 +1,0 @@
-export default function getUrlData(t){"#/"===t.slice(t.length-2,t.length)&&(t=t.slice(0,t.length-2));var e={},t=t.split("?")[1];return t?(t.split("&").map(function(t){var l=t.split("=");e[t.split("=")[0]]=l[1]}),e):{}}

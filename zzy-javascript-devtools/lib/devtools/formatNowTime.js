@@ -1,1 +1,0 @@
-export default function formatNowTime(e){function t(e){return e<10?"0"+e:e}e=parseInt(e);var n=(e=new Date(e)).getFullYear(),r=e.getMonth()+1,o=e.getDate(),u=e.getHours(),a=e.getMinutes(),e=e.getSeconds();return n+"-"+t(r)+"-"+t(o)+" "+t(u)+":"+t(a)+":"+t(e)}

@@ -8,7 +8,7 @@
     "babel_t": "./node_modules/.bin/babel separate --copy-files -d DL",
     "minfiles": "node ./command/uglify.js",
     "parsing": "node ./command/parsingJs.js",
-    "clear_lib": "node ./command/clear.js"
+    "clear_lib": "node ./command/clear.js ../lib"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.14",

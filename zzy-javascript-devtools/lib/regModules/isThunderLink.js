@@ -1,1 +1,0 @@
-export default function isThunderLink(t){return/^thunderx?:\/\/[a-zA-Z\d]+=$/g.test(t)}

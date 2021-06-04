@@ -1,1 +1,0 @@
-export default function getDomStyle(t,e){return getComputedStyle(t)[e]}

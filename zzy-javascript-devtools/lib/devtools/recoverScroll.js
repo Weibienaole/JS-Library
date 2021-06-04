@@ -1,1 +1,0 @@
-export default function recoverScroll(o){document.body.style["overflow-y"]="auto",document.body.style.position="static",window.scrollTo(0,o)}

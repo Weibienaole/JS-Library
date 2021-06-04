@@ -1,1 +1,0 @@
-export default function typeOf(t){t=Object.prototype.toString.call(t).split(" ")[1];return t.slice(0,t.length-1)}

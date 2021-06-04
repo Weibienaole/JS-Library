@@ -1,1 +1,0 @@
-export default function formateSeconds(t){var a=parseInt(t),r=0,n=0,t=0;return 60<a&&(r=parseInt(a/60),a=parseInt(a%60),60<r&&(n=parseInt(r/60),r=parseInt(r%60),23<n&&(t=parseInt(n/24),n=parseInt(n%24)))),"".concat(t.toString().padStart(2,"0"),":").concat(n.toString().padStart(2,"0"),":").concat(r.toString().padStart(2,"0"),":").concat(a.toString().padStart(2,"0"))}

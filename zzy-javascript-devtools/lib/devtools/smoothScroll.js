@@ -1,1 +1,0 @@
-export default function smoothScroll(o){document.querySelector(o).scrollIntoView({behavior:"smooth"})}

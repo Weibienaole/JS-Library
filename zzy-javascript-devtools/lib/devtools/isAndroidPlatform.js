@@ -1,1 +1,0 @@
-export default function isAndroidPlatform(){var r=navigator.userAgent;return-1<r.indexOf("Android")||-1<r.indexOf("Adr")}

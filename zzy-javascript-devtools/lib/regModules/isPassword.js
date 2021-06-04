@@ -1,1 +1,0 @@
-export default function isPassword(t){return/^[a-zA-Z0-9_]+$/.test(t)&&5<t.length&&t.length<21}

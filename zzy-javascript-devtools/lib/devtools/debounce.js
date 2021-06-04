@@ -1,1 +1,0 @@
-export default function debounce(u,o){function n(){var n,t=this,e=arguments;return i&&clearTimeout(i),c?(n=!i,i=setTimeout(function(){i=null},o),n&&(l=u.apply(t,e))):i=setTimeout(function(){u.apply(t,e)},o),l}var i,l,c=!(2<arguments.length&&void 0!==arguments[2])||arguments[2];return n.cancel=function(){clearTimeout(i),i=null},n}
