@@ -22,8 +22,8 @@ const classObj = {
     width: '100vw',
     height: '5.5rem',
     display: 'flex',
-    'alignItems': 'center',
-    'justifyContent': 'center',
+    'align-items': 'center',
+    'justify-content': 'center',
     position: 'relative'
   },
   arrow: {
@@ -34,14 +34,14 @@ const classObj = {
     height: '5.5rem'
   },
   topBarTil: {
-    'fontSize': '2.25rem',
-    'fontFamily': 'PingFangSC-Medium, PingFang SC',
-    'fontWeight': 500
+    'font-size': '2.25rem',
+    'font-family': 'PingFangSC-Medium, PingFang SC',
+    'font-weight': 500
   },
   rigTxt: {
     position: 'absolute',
     right: '3rem',
-    'fontSize': '1.75rem'
+    'font-size': '1.75rem'
   }
 }
 export default class TopBar extends Component {

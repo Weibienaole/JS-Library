@@ -13,16 +13,16 @@ const classObj = {
   'noData-component_zzyDevtools': {
     width: '100%',
     display: 'flex',
-    'flexDirection': 'column',
-    'alignItems': 'center'
+    'flex-direction': 'column',
+    'align-items': 'center'
   },
   noDataPic: {
-    'marginBottom': '0.88rem'
+    'margin-bottom': '0.88rem'
   },
   say: {
-    'fontSize': '1.75rem',
-    'fontFamily': 'PingFangSC-Regular, PingFang SC',
-    'fontWeight': 400,
+    'font-size': '1.75rem',
+    'font-family': 'PingFangSC-Regular, PingFang SC',
+    'font-weight': 400,
     color: '#898998'
   }
 }
