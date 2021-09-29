@@ -28,6 +28,9 @@ bottomVisible() // false
 
 ## 版本更新历史
 
+- 1.4.2&3
+  - 优化部分文件
+  - 错误边界组件(ErrorBoundary) 新增 mode 参数，development环境报错后显示当前页面地址，便于开发测试
 - 1.4.1
   - 补充和修改一些信息
   - 优化命令文件
@@ -349,6 +352,8 @@ infinityScrolling(document.querySelector('.bottomScrollBar'), () => {
   //  ...some code
   infinityScrolling.open = true // done
 })
+// 关闭监听: 只有低版本在使用滚动条监听时才需要关闭监听(可以一直开着，内部有判断，不是滚动条监听会return)
+infinityScrolling.closeMonitor()
 ```
 
 ##### html
@@ -440,10 +445,15 @@ import { ScrollLoadingBar } from 'zzy-javascript-devtools';
 - 请在 App.js 中用此组件将 Route 组件包裹即可展示错误之后的 UI 信息
 - 它在渲染期间、生命周期方法和整个组件树的构造函数中捕获错误
 - 无法捕获 事件处理，异步代码等错误
+- 开发、测试环境下(development) 展示当前页面地址，点击可复制(服务于移动端开发测试)
 
 ```javascript
+/**
+ * @param {String} mode 当前环境
+ */
+
 import { ErrorBoundary } from 'zzy-javascript-devtools';
-<ErrorBoundary>
+<ErrorBoundary mode='development'>
   // 包裹住 Route
   <Route />
 </ErrorBoundary>

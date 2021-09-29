@@ -1,13 +1,13 @@
 {
   "name": "zzy-javascript-devtools",
-  "version": "1.4.1",
+  "version": "1.4.3",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "babel": "./node_modules/.bin/babel separate --copy-files -d lib",
-    "babel_t": "./node_modules/.bin/babel separate --copy-files -d DL",
-    "minfiles": "node ./command/uglify.js",
     "parsing": "node ./command/parsingJs.js",
+    "babel": "./node_modules/.bin/babel separate --copy-files -d lib",
+    "minfiles": "node ./command/uglify.js",
+    "babel_t": "./node_modules/.bin/babel separate --copy-files -d DL",
     "clear_lib": "node ./command/clear.js ../lib"
   },
   "devDependencies": {

@@ -14,7 +14,7 @@ export default class ErrorBoundary extends Component {
     }
   }
   static getDerivedStateFromError(error) {
-    console.log(error, '更新state 使下一次的UI是降级后的UI')
+    console.error(error, '更新state 使下一次的UI是降级后的UI')
     return { hasError: true }
   }
   componentDidCatch(error, errorInfo) {
@@ -23,11 +23,39 @@ export default class ErrorBoundary extends Component {
   render() {
     if (this.state.hasError)
       return (
-        <div style={{ fontSize: '2.5rem', color: 'red' }}>
+        <div style={{ fontSize: '2.5rem', color: 'red', margin: '1rem', 'word-break': 'break-word' }}>
           Something was wrong, please open the console to check the printing, or
           contact the Developer.
+          <br />
+          {this.props.mode === 'development' && (
+            <div onClick={() => copyToClipboard(window.location.href || 'none')}>
+              <br />
+              <span>link: {window.location.href || 'none'}</span>
+              <br />
+              <br />
+              点击链接进行复制.
+            </div>
+          )}
         </div>
       )
     return this.props.children
+  }
+}
+
+function copyToClipboard(str) {
+  const el = document.createElement('textarea');
+  el.value = str;
+  el.setAttribute('readonly', '');
+  el.style.position = 'absolute';
+  el.style.left = '-9999px';
+  document.body.appendChild(el);
+  const selected =
+    document.getSelection().rangeCount > 0 ? document.getSelection().getRangeAt(0) : false;
+  el.select();
+  document.execCommand('copy');
+  document.body.removeChild(el);
+  if (selected) {
+    document.getSelection().removeAllRanges();
+    document.getSelection().addRange(selected);
   }
 }
