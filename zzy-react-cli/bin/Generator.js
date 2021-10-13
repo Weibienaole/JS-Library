@@ -40,7 +40,7 @@ class Generator {
     // 筛选指定项目，过滤只要名称
     const repos = repoList.filter(item => item.name.indexOf('zzy-react-project') !== -1)
 
-    // 2）用户选择自己新下载的模板名称
+    // 2）用户选择需要下载的模板名称
     const { repo } = await inquirer.prompt({
       name: 'repo',
       type: 'list',

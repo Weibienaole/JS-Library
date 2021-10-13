@@ -2,7 +2,6 @@ const fs = require('fs-extra')
 const path = require('path')
 const inquirer = require('inquirer')
 const Generator = require('./Generator')
-const validateProjectName = require('validate-npm-package-name')
 
 module.exports = async function (name, options) {
   // 检测命名是否允许使用
@@ -41,7 +40,7 @@ module.exports = async function (name, options) {
         return
       } else if (action === 'overwrite') {
         // 移除已存在的目录
-        console.log(`\r\nRemoving...`)
+        console.log(`\r\n移除原有文件中...`)
         await fs.remove(targetDir)
       }
     }

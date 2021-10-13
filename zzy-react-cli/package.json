@@ -1,15 +1,20 @@
 {
   "name": "zzy-react-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "渣渣宇的react脚手架",
   "main": "./bin/start.js",
   "bin": {
     "zzy-cli": "./bin/start.js"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "author": {
+    "name": "zzy",
+    "email": "weibienaole@163.com"
   },
-  "author": "zzy",
+  "keywords": [
+    "zzy-react-cli",
+    "zzy",
+    "脚手架"
+  ],
   "license": "ISC",
   "devDependencies": {
     "axios": "^0.21.4",
@@ -18,8 +23,7 @@
     "fs-extra": "^10.0.0",
     "inquirer": "^8.1.5",
     "ora": "5.4.1",
-    "util": "^0.12.4",
-    "validate-npm-package-name": "^3.0.0"
+    "util": "^0.12.4"
   },
   "dependencies": {}
 }
