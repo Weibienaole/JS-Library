@@ -1,6 +1,6 @@
 {
   "name": "zzy-javascript-devtools",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -25,5 +25,15 @@
     "index.js",
     "package.json",
     "readme.md"
+  ],
+  "author": {
+    "name": "zzy",
+    "email": "weibienaole@163.com"
+  },
+  "keywords": [
+    "zzy-javascript-devtools",
+    "zzy",
+    "渣渣宇",
+    "渣渣宇的开发工具包"
   ]
 }

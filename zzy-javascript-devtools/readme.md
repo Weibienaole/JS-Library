@@ -28,6 +28,8 @@ bottomVisible() // false
 
 ## 版本更新历史
 
+- 1.4.4
+  - 补充作者，词条检索信息
 - 1.4.2&3
   - 优化部分文件
   - 错误边界组件(ErrorBoundary) 新增 mode 参数，development环境报错后显示当前页面地址，便于开发测试

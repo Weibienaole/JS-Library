@@ -1,6 +1,6 @@
 {
   "name": "zzy-react-cli",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "渣渣宇的react脚手架",
   "main": "./bin/start.js",
   "bin": {
@@ -16,7 +16,8 @@
     "脚手架"
   ],
   "license": "ISC",
-  "devDependencies": {
+  "devDependencies": {},
+  "dependencies": {
     "axios": "^0.21.4",
     "commander": "^8.2.0",
     "download-git-repo": "^3.0.2",
@@ -24,6 +25,5 @@
     "inquirer": "^8.1.5",
     "ora": "5.4.1",
     "util": "^0.12.4"
-  },
-  "dependencies": {}
+  }
 }
