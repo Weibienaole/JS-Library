@@ -219,15 +219,12 @@ import NoData from './lib//ReactComponents/NoData.js'
 import ScrollLoadingBar from './lib//ReactComponents/ScrollLoadingBar.js'
 
 
-import ScrollLoadingBarV2 from './lib//ReactComponents/ScrollLoadingBarV2.js'
-
-
 import TopBar from './lib//ReactComponents/TopBar.js'
 
 
-let ReactComponents = { ErrorBoundary, Img, NoData, ScrollLoadingBar, ScrollLoadingBarV2, TopBar }
+let ReactComponents = { ErrorBoundary, Img, NoData, ScrollLoadingBar, TopBar }
 
 
 
-export { generateTree, allEquals, getColonTimeFromDate, getDaysDiffBetweenDates, changeTimeYear, formateSeconds, formatNowTime, bottomVisible, isBrowserTabFocused, scrollToTop, smoothScroll, getScrollPosition, preventScroll, recoverScroll, elementIsVisibleInViewport, launchFullscreen, exitFullscreen, formToObject, isEmptyObject, copyToClipboard, formatMoney, formatFileSize, strTrim, detectDeviceType, isAndroidPlatform, getUrlData, setDomRem, rewirteLog, typeOf, deepClone, lazyImage, debounce, throttle, infinityScrolling, deleteHTMLTags, getDomStyle, JSB_init, JSB_appMethod, JSB_jsMethod, isIdCard, isPassport, isPhone, isPhoneStrict, isLandlineTelephone, isName, isEnglish, isInteger, isPassword, isEmail, isUrl, isMoney, isPostcode, isWeChatNum, isColor16, isTrainNum, isIMEI, isHttpAndPort, isCreditCode, isThunderLink, isWindowsFolderPath, isWindowsFilePath, isVersion, isVideoUrl, isImageUrl, isAccountNumber, isLicensePlateNumber, isExternal, ErrorBoundary, Img, NoData, ScrollLoadingBar, ScrollLoadingBarV2, TopBar, devtools, regModules, ReactComponents }
+export { generateTree, allEquals, getColonTimeFromDate, getDaysDiffBetweenDates, changeTimeYear, formateSeconds, formatNowTime, bottomVisible, isBrowserTabFocused, scrollToTop, smoothScroll, getScrollPosition, preventScroll, recoverScroll, elementIsVisibleInViewport, launchFullscreen, exitFullscreen, formToObject, isEmptyObject, copyToClipboard, formatMoney, formatFileSize, strTrim, detectDeviceType, isAndroidPlatform, getUrlData, setDomRem, rewirteLog, typeOf, deepClone, lazyImage, debounce, throttle, infinityScrolling, deleteHTMLTags, getDomStyle, JSB_init, JSB_appMethod, JSB_jsMethod, isIdCard, isPassport, isPhone, isPhoneStrict, isLandlineTelephone, isName, isEnglish, isInteger, isPassword, isEmail, isUrl, isMoney, isPostcode, isWeChatNum, isColor16, isTrainNum, isIMEI, isHttpAndPort, isCreditCode, isThunderLink, isWindowsFolderPath, isWindowsFilePath, isVersion, isVideoUrl, isImageUrl, isAccountNumber, isLicensePlateNumber, isExternal, ErrorBoundary, Img, NoData, ScrollLoadingBar, TopBar, devtools, regModules, ReactComponents }
 

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import styled from 'styled-components'
 /*
  错误边界
   1.请在App.js中用此组件将 Route组件包裹即可展示错误之后的UI信息
@@ -7,13 +6,12 @@ import styled from 'styled-components'
   3.无法捕获 事件处理，异步代码等错误
 */
 
-const Container = styled.div`
-  font-size: 2.5rem;
-  color: red;
-  margin: 1rem;
-  word-break: break-word;
-`
-
+const style = {
+  'font-size': '2.5rem',
+  color: 'red',
+  margin: '1rem',
+  'word-break': 'break-word',
+}
 export default class ErrorBoundary extends Component<Props, State> {
   constructor(props: Props) {
     super(props)
@@ -31,7 +29,7 @@ export default class ErrorBoundary extends Component<Props, State> {
   render() {
     if (this.state.hasError)
       return (
-        <Container>
+        <div style={style} className="errorBoundary-component_zzyDevtools">
           Something was wrong, please open the console to check the printing, or
           contact the Developer.
           <br />
@@ -44,7 +42,7 @@ export default class ErrorBoundary extends Component<Props, State> {
               点击链接进行复制.
             </div>
           )}
-        </Container>
+        </div>
       )
     return this.props.children
   }

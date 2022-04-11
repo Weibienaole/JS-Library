@@ -1,5 +1,4 @@
 import React, { memo } from 'react'
-import styled from 'styled-components'
 
 // import './index.css'
 /*
@@ -10,34 +9,34 @@ import styled from 'styled-components'
     src - 图片地址
 */
 
-const Container = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  .noDataPic {
-    margin-bottom: 0.88rem;
-  }
-  .say {
-    font-size: 1.75rem;
-    font-family: PingFangSC-Regular, PingFang SC;
-    font-weight: 400;
-    color: #898998;
-  }
-`
+const style1 = {
+  width: '100%',
+  display: 'flex',
+  'flex-direction': 'column',
+  alignItems: 'center',
+}
+const style2 = {
+  marginBottom: '0.88rem'
+}
+const style3 = {
+  fontSize: '1.75rem',
+  fontFamily: 'PingFangSC-Regular, PingFang SC',
+  fontWeight: 400,
+  color: '#898998',
+}
 
 const NoData = (props: Props) => {
   const { style, src, say } = props
   return (
-    <Container className="noData-component_zzyDevtools">
+    <div style={style1} className="noData-component_zzyDevtools">
       {src && <img
-        style={{ ...style }}
+        style={{ ...style2, ...style }}
         src={src?.default || src}
         alt=""
         className="noDataPic"
       />}
-      <span className="say">{say}</span>
-    </Container>
+      <span className="say" style={style3}>{say}</span>
+    </div>
   )
 }
 
