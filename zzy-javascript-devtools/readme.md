@@ -5,7 +5,8 @@
 ## 安装
 
 ```javascript
-npm i zzy-javascript-devtools
+npm i zzy-javascript-devtools -S
+yarn add zzy-javascript-devtools -S
 ```
 
 ## 使用
@@ -28,6 +29,13 @@ bottomVisible() // false
 
 ## 版本更新历史
 
+- 1.5.0
+  - 包源文件转ts
+  - 提供部分方法的声明文件(typing内)
+  - react组件改造为函数式组件(HOOK),样式部分使用styled-componets重写,优化逻辑
+  - 新增 ScrollLoadingBarV2 组件，详情下方查找
+  - 重构命令文件
+  - 修复已知bug
 - 1.4.4
   - 补充作者，词条检索信息
 - 1.4.2&3
@@ -233,6 +241,11 @@ const comments1 = [
 - 将一组表单元素转化为对象
 - formToObject(document.querySelector('#form')); ---> { email: 'test@email.com', name: 'Test Name' }
 
+###### isEmptyObject(form)
+
+- 判断对象是否为空
+- isEmptyObject(obj = {}) --> true
+
 ###### copyToClipboard(str)
 
 - 将字符串复制到剪贴板
@@ -300,31 +313,22 @@ const comments1 = [
 - 需要设置 html 中的 img src 为空，data-src 属性为目标路径
 - 必须等待加载目标的 data-src 属性赋值完毕，再执行此方法
 
-###### debounce(func, wait, immediate)
+###### debounce(func, wait)
 
 - 函数防抖
-- 参数： 执行函数, 等待时间, 是否立即执行一次(默认 true)
-- 可选方法
-- let debounce = debounce(func, wait, immediate)
-- debounce.cancel 关闭防抖
+- 参数： 执行函数, 等待时间
 
 ```javascript
-// example: (Vue) 其余同理
-// 1.先在 data 中设置防抖目标
-data(){
-  return{
-    debounceFn: debounce(this.fn, 1000, true)
-  }
-},
-methods:{
-  fn(){
-    console.log('我不是渣渣宇-。=')
-  },
-// 2. 执行时直接调用防抖函数的返回值(this.data.debounceFn)即可
-  click(){
-    this.debounceFn() // 首次执行，之后一秒内如果重复触发则在最后一次触发的一秒后执行
-  }
+// example: (React) 
+const clickDiv = () => {
+  console.log('1')
 }
+const debounceClick = () => {
+  return debounce(clickDiv, 1000)
+}
+<div className="container" onClick={debounceClick()}>
+  1212
+</div>
 ```
 
 ###### throttle(func, wait, options)
@@ -442,6 +446,49 @@ import { ScrollLoadingBar } from 'zzy-javascript-devtools';
 ></ScrollLoadingBar>
 ```
 
+##### 无线滚动包含块(better-scroll) ScrollLoadingBarV2
+- 封装better-scroll的组件，相比 infinityScrolling 有更多的功能以及上限
+- 使用ScrollLoadingBarV2组件时需要保证父容器的高度足够撑起，才可以正常滚动。就是在容器元素高度固定，当子元素高度超过容器元素高度时，通过 transfrom 动画产生滑动效果，因此它的使用原则就是外部容器必须是固定高度，不然没法滚动
+```javascript
+/**
+ * props:
+ * @param {'vertical' | 'horizontal'} direction = 'vertical' 滚动的方向
+ * @param {Boolean} refresh = true 是否刷新 default: true
+ * @param {Boolean} bounceTop = true 是否支持向上吸顶 
+ * @param {Boolean} bounceBottom = true 是否支持向下吸底
+ * @param {Function} onScroll = null 滑动触发的回调函数
+ * @param {Function} pullUp = null 上拉加载逻辑
+ * @param {Function} pullDown = null 下拉加载逻辑
+ * 
+ * 组件暴露出两个方法:
+ *  refresh() // 刷新scroll，并前往顶部
+ *  getScroll() // 拿到scroll实例
+ * */
+
+
+// example:
+import { ScrollLoadingBarV2 } from 'zzy-javascript-devtools';
+const scrollRef = useRef()
+
+<div style={{width: '100vw', height: '100vh'}}>
+  <ScrollLoadingBarV2
+    ref={scrollRef}
+    direction='vertical'
+    onScroll={handleScroll}
+    pullUp={handlePullUp}
+  >
+    <div>
+      {Array(100).fill(null).map((item, index) => (
+        <div className="line" key={index}>{index}</div>
+      ))}
+    </div>
+  </ScrollLoadingBarV2>
+</div>
+
+// 暴露方法使用:
+scrollRef.current.refresh()
+const BScroll = scrollRef.current.getScroll()
+```
 ##### 错误边界 ErrorBoundary
 
 - 请在 App.js 中用此组件将 Route 组件包裹即可展示错误之后的 UI 信息

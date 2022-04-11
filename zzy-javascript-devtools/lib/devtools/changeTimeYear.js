@@ -1,1 +1,1 @@
-export default function changeTimeYear(e){e=parseInt(e);var t=(e=new Date(e)).getFullYear(),a=e.getMonth()+1,e=e.getDate();return t+"-"+(10<=a?a:"0"+a)+"-"+(10<=e?e:"0"+e)+" "}
+export default function(t){"string"==typeof t&&(t=parseInt(t));var e=(t=new Date(t)).getFullYear(),n=t.getMonth()+1,t=t.getDate();return e+"-"+(10<=n?n:"0"+n)+"-"+(10<=t?t:"0"+t)+" "}

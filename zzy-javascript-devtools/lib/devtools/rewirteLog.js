@@ -1,1 +1,1 @@
-export default function rewirteLog(){console.log=function(){}}
+export default function(){console.log=function(){}}

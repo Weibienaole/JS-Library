@@ -1,1 +1,1 @@
-export default function elementIsVisibleInViewport(t){var e=1<arguments.length&&void 0!==arguments[1]&&arguments[1],n=t.getBoundingClientRect(),i=n.top,o=n.left,r=n.bottom,l=n.right,d=window,n=d.innerHeight,d=d.innerWidth;return e?(0<i&&i<n||0<r&&r<n)&&(0<o&&o<d||0<l&&l<d):0<=i&&0<=o&&r<=n&&l<=d}
+export default function(t){var n=1<arguments.length&&void 0!==arguments[1]&&arguments[1],e=t.getBoundingClientRect(),i=e.top,o=e.left,r=e.bottom,d=e.right,g=window,e=g.innerHeight,g=g.innerWidth;return n?(0<i&&i<e||0<r&&r<e)&&(0<o&&o<g||0<d&&d<g):0<=i&&0<=o&&r<=e&&d<=g}

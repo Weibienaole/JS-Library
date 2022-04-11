@@ -1,1 +1,1 @@
-export default function getDomStyle(t,e){return getComputedStyle(t)[e]}
+export default function(t,e){return getComputedStyle(t)["".concat(e)]}

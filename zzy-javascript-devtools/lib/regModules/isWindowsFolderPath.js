@@ -1,1 +1,1 @@
-export default function isWindowsFolderPath(t){return/^[a-zA-Z]:\\(?:\w+\\?)*$/g.test(t)}
+export default function(t){return/^[a-zA-Z]:\\(?:\w+\\?)*$/g.test(t)}

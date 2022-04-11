@@ -1,1 +1,1 @@
-export default function formatNowTime(e){function t(e){return e<10?"0"+e:e}e=parseInt(e);var n=(e=new Date(e)).getFullYear(),r=e.getMonth()+1,o=e.getDate(),u=e.getHours(),a=e.getMinutes(),e=e.getSeconds();return n+"-"+t(r)+"-"+t(o)+" "+t(u)+":"+t(a)+":"+t(e)}
+export default function(t){function e(t){return t<10?"0"+t:t}"string"==typeof t&&(t=parseInt(t));var n=new Date(t),r=n.getFullYear(),u=n.getMonth()+1,g=n.getDate(),o=n.getHours(),t=n.getMinutes(),n=n.getSeconds();return r+"-"+e(u)+"-"+e(g)+" "+e(o)+":"+e(t)+":"+e(n)}

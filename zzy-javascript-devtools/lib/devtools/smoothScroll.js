@@ -1,1 +1,1 @@
-export default function smoothScroll(o){document.querySelector(o).scrollIntoView({behavior:"smooth"})}
+export default function(o){null!==(o=document.querySelector(o))&&void 0!==o&&o.scrollIntoView({behavior:"smooth"})}

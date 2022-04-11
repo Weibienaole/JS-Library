@@ -1,1 +1,1 @@
-import React,{Component}from"react";export default function Img(t){var e=t.className,a=t.src,c=t.click;return React.createElement("img",{onClick:function(){return c&&c()},src:"","data-src":(null==a?void 0:a.default)||a,alt:"",className:e})}
+import{jsx as _jsx}from"react/jsx-runtime";import{memo}from"react";var Img=function(r){var a=r.className,c=r.src,m=r.click;return _jsx("img",{onClick:function(){return m&&m()},src:"","data-src":(null==c?void 0:c.default)||c,alt:"",className:a},void 0)};Img.defaultProps={className:"",src:null,click:function(){}};export default memo(Img);

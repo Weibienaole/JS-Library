@@ -1,1 +1,1 @@
-export default function getScrollPosition(){var e=0<arguments.length&&void 0!==arguments[0]?arguments[0]:window;return{x:void 0!==e.pageXOffset?e.pageXOffset:e.scrollLeft,y:void 0!==e.pageYOffset?e.pageYOffset:e.scrollTop}}
+export default function(){var e=0<arguments.length&&void 0!==arguments[0]?arguments[0]:window;return{x:void 0!==e.pageXOffset?e.pageXOffset:e.scrollLeft,y:void 0!==e.pageYOffset?e.pageYOffset:e.scrollTop}}

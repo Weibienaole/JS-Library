@@ -1,1 +1,1 @@
-export default function bottomVisible(){return document.documentElement.clientHeight+window.scrollY>=(document.documentElement.scrollHeight||document.documentElement.clientHeight)}
+export default function(){return document.documentElement.clientHeight+window.scrollY>=(document.documentElement.scrollHeight||document.documentElement.clientHeight)}

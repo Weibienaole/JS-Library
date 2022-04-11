@@ -1,1 +1,1 @@
-export default function isInteger(t){return/^[-+]?\d*$/.test(t)}
+export default function(t){return/^[-+]?\d*$/.test(t)}

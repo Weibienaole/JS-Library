@@ -1,1 +1,1 @@
-export default function isExternal(t){return/^(https?:|mailto:|tel:)/.test(t)}
+export default function(t){return/^(https?:|mailto:|tel:)/.test(t)}

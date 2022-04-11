@@ -1,1 +1,1 @@
-export default function deleteHTMLTags(e){return e.replace(/<[^>]*>/g,"")}
+export default function(e){return e.replace(/<[^>]*>/g,"")}

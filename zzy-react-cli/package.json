@@ -1,6 +1,6 @@
 {
   "name": "zzy-react-cli",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "渣渣宇的react脚手架",
   "main": "./bin/start.js",
   "bin": {

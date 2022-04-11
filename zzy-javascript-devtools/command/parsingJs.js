@@ -1,7 +1,6 @@
 const fs = require('fs');
 const path = require('path')
-const getFiles = require('./getFiles')
-const copyFiles = require('./copyFiles')
+const { copyFiles, getFiles } = require('./controlFile')
 
 /*
   导入主文件
@@ -59,7 +58,7 @@ class Parsing {
         name: i
       })
       let filePath = `${this.resolvePath}/${dirName}/${i}.js`
-      fs.writeFileSync(filePath, 'export default ' + exportFn, 'utf-8')
+      fs.writeFileSync(filePath, `export default ` + exportFn, 'utf-8')
     }
     // 记录每一个文件内所有导出模块(新文件)的路径及模块名称
     this.fileDetail[dirName] = dirDatas
@@ -71,10 +70,11 @@ class Parsing {
     let fileD = this.fileDetail
     let RCFiles = getFiles(`${this.resolvePath}/ReactComponents`)
     // 筛选出后缀仅为 .jsx 的文件 且对后缀进行替换并将格式与 fileDetail 同步
-    RCFiles = RCFiles.filter(i => path.extname(i.fileName) === '.jsx').map(j => {
+    RCFiles = RCFiles.map(j => {
+      const splitAr = j.path.split('separate')
       return {
-        path: `${this.storePath}${j.path.split('separate')[1].replace('.jsx', '.js')}`,
-        name: j.fileName.split('.jsx')[0]
+        path: `${this.storePath}${splitAr[splitAr.length - 1]}`,
+        name: j.fileName.split('.js')[0]
       }
     })
     fileD = { ...fileD, 'ReactComponents': RCFiles }
@@ -119,7 +119,7 @@ export { ${exportCon}, ${dirNames} }
 }
 
 const parsing = new Parsing(
-  path.resolve(__dirname, '../src'),
+  path.resolve(__dirname, '../build/src'),
   path.resolve(__dirname, '../separate'),
   path.resolve(__dirname, '../index.js')
 )

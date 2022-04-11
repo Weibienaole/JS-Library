@@ -1,1 +1,1 @@
-export default function isEnglish(t){return/^[a-zA-Z]+$/.test(t)}
+export default function(t){return/^[a-zA-Z]+$/.test(t)}

@@ -1,1 +1,1 @@
-export default function preventScroll(o){o=window.scrollY,document.body.style["overflow-y"]="hidden",document.body.style.position="fixed",document.body.style.width="100%",document.body.style.top=-o+"px"}
+export default function(o){o=window.scrollY,document.body.style["overflow-y"]="hidden",document.body.style.position="fixed",document.body.style.width="100%",document.body.style.top=-o+"px"}

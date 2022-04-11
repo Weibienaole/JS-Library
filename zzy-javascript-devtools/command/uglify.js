@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path')
 const UglifyJS = require('uglify-js');
-const getFiles = require('./getFiles')
+const { getFiles } = require('./controlFile')
 
 
 // 对每个文件进行写入

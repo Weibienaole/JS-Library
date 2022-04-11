@@ -1,1 +1,1 @@
-export default function getColonTimeFromDate(e){return e.toTimeString().slice(0,8)}
+export default function(t){return t.toTimeString().slice(0,8)}

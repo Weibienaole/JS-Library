@@ -1,1 +1,1 @@
-export default function isBrowserTabFocused(){return!document.hidden}
+export default function(){return!document.hidden}
