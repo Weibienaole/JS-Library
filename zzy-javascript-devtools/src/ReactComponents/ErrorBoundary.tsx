@@ -25,6 +25,8 @@ export default class ErrorBoundary extends Component<Props, State> {
   }
   componentDidCatch(error: any, errorInfo: any) {
     console.log(error, errorInfo, '将报错上传至服务器')
+    console.log('JSON化错误日志：error--------', JSON.stringify(error), 'errorInfo---------', JSON.stringify(error));
+
   }
   render() {
     if (this.state.hasError)
