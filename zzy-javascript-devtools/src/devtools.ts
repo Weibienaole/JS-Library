@@ -839,7 +839,7 @@ const JSB_init = () => {
    *  之所以不将上面两个方法融合成一个方法，是因为放在一起，那么就只有 iosFuntion 中相关的方法体生效
    */
   window.setupWebViewJavascriptBridge = isAndroid ? andoirFunction : iosFuntion
-  console.log(isAndroid, 'isAndroid, 是否安卓')
+  // console.log(isAndroid, 'isAndroid, 是否安卓')
 
   /**
    * 这里如果不做判断是不是安卓，而是直接就执行下面的方法，就会导致

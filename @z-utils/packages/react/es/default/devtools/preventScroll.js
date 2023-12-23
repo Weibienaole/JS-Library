@@ -1,0 +1,1 @@
+var o=function(o){return o=o||window.scrollY,document.body.style["overflow-y"]="hidden",document.body.style.position="fixed",document.body.style.width="100%",document.body.style.top=-o+"px",o};export{o as default};

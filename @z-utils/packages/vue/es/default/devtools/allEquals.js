@@ -1,0 +1,1 @@
+import e from"@babel/runtime/helpers/typeof";function t(r,n){if(r===n)return!0;if(r instanceof Date&&n instanceof Date)return r.getTime()===n.getTime();if(!r||!n||"object"!==e(r)&&"object"!==e(n))return r===n;if(r.prototype!==n.prototype)return!1;var o=Object.keys(r);return o.length===Object.keys(n).length&&o.every((function(e){return t(r[e],n[e])}))}export{t as default};

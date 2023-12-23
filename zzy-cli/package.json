@@ -1,6 +1,6 @@
 {
   "name": "zzy-project-cli",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "渣渣宇的项目脚手架",
   "main": "./bin/start.js",
   "bin": {
@@ -17,7 +17,6 @@
     "渣渣宇"
   ],
   "license": "ISC",
-  "devDependencies": {},
   "dependencies": {
     "axios": "^0.21.4",
     "commander": "^8.2.0",

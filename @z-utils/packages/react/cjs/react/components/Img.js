@@ -1,0 +1,1 @@
+"use strict";var r=require("react/jsx-runtime"),c=require("react"),e=function(c){var e=c.className,a=c.src,s=c.click;return r.jsx("img",{onClick:function(){return s&&s()},src:"","data-src":(null==a?void 0:a.default)||a,alt:"",className:e})};e.defaultProps={className:"",src:null,click:function(){}};var a=c.memo(e);module.exports=a;

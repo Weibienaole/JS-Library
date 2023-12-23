@@ -1,0 +1,1 @@
+"use strict";var e=require("@babel/runtime/helpers/typeof");module.exports=function r(i){var l;if("object"===e(i))if(Array.isArray(i))for(var s in l=[],i)l.push(r(i[s]));else if(null===i)l=null;else if(i.constructor===RegExp)l=i;else for(var t in l={},i)l[t]=r(i[t]);else l=i;return l};

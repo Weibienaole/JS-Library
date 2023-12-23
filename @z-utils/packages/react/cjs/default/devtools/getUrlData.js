@@ -1,0 +1,1 @@
+"use strict";module.exports=function(t){"#/"===t.slice(t.length-2,t.length)&&(t=t.slice(0,t.length-2));var e={},l=t.split("?")[1];return l?(l.split("&").map((function(t){var l=t.split("="),i=l[0];e[i]=l[1]})),e):{}};

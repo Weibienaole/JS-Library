@@ -1,0 +1,1 @@
+import e from"@babel/runtime/helpers/typeof";function r(l){var f;if("object"===e(l))if(Array.isArray(l))for(var i in f=[],l)f.push(r(l[i]));else if(null===l)f=null;else if(l.constructor===RegExp)f=l;else for(var o in f={},l)f[o]=r(l[o]);else f=l;return f}export{r as default};

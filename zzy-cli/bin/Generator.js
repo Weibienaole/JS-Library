@@ -21,9 +21,12 @@ class Generator {
   async create() {
     // 1）获取模板名称
     const repo = await this.getRepo()
+    try{
 
-    await this.download(repo)
-    console.log('模版下载成功！');
+      await this.download(repo)
+      console.log('模版下载成功！');
+    }catch{
+    }
     clearTimeout(timer)
   }
   /*
@@ -38,18 +41,19 @@ class Generator {
     if (!repoList) return
 
     // 筛选指定项目，过滤只要名称
-    const repos = repoList.filter(item => item.name.indexOf('zzy-project') !== -1)
+    const repos = repoList.filter(item => item.name.startsWith('zProject'))
+    // console.log(repos, 'repos');
 
     // 2）用户选择需要下载的模板名称
     const { repo } = await inquirer.prompt({
       name: 'repo',
       type: 'list',
-      choices: repos.map(item => item.description),
+      choices: repos.map(item => item.name),
       message: '请选择一个模版进行创建'
     })
 
     // 3. return用户选择
-    const selectRepos = repos.filter(item => item.description === repo)[0]
+    const selectRepos = repos.filter(item => item.name === repo)[0]
     return { name: selectRepos.name, branch: selectRepos.default_branch }
   }
 
@@ -88,7 +92,7 @@ async function wrapLoading(fn, message, ...args) {
   } catch {
     // 失败
     spinner.fail('请求失败，请重试...')
-    return null
+    return false
   }
 }
 

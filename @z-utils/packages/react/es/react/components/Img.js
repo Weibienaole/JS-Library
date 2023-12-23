@@ -1,0 +1,1 @@
+import{jsx as r}from"react/jsx-runtime";import{memo as a}from"react";var c=function(a){var c=a.className,t=a.src,l=a.click;return r("img",{onClick:function(){return l&&l()},src:"","data-src":(null==t?void 0:t.default)||t,alt:"",className:c})};c.defaultProps={className:"",src:null,click:function(){}};var t=a(c);export{t as default};
