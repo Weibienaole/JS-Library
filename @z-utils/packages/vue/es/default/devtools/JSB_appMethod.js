@@ -1,1 +1,0 @@
-var i=function(i){var n=arguments.length>1&&void 0!==arguments[1]?arguments[1]:null;return new Promise((function(e,t){if(!window.setupWebViewJavascriptBridge)return t("请先将 JSB_init 方法引入！");window.setupWebViewJavascriptBridge((function(t){t.callHandler(i,n,(function(i){e(i)}))}))}))};export{i as default};

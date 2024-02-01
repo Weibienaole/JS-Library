@@ -1,1 +1,0 @@
-"use strict";module.exports=function(t,e){var r;return function(){for(var n=this,o=arguments.length,u=new Array(o),i=0;i<o;i++)u[i]=arguments[i];r&&clearTimeout(r),r=setTimeout((function(){t.apply(n,u),clearTimeout(r)}),e)}};

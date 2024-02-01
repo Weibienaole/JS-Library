@@ -1,1 +1,0 @@
-var e=function(e){e.requestFullscreen?e.requestFullscreen():null!=e&&e.mozRequestFullScreen?e.mozRequestFullScreen():e.msRequestFullscreen?e.msRequestFullscreen():e.webkitRequestFullscreen&&e.webkitRequestFullScreen()};export{e as default};

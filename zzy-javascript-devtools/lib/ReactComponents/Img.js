@@ -1,1 +1,0 @@
-import{jsx as _jsx}from"react/jsx-runtime";import{memo}from"react";var Img=function(r){var a=r.className,c=r.src,m=r.click;return _jsx("img",{onClick:function(){return m&&m()},src:"","data-src":(null==c?void 0:c.default)||c,alt:"",className:a},void 0)};Img.defaultProps={className:"",src:null,click:function(){}};export default memo(Img);

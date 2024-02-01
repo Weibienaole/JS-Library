@@ -1,1 +1,0 @@
-export default function(e){return e.replace(/<[^>]*>/g,"")}

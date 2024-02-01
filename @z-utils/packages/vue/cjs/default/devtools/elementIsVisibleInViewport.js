@@ -1,1 +1,0 @@
-"use strict";module.exports=function(t){var e=arguments.length>1&&void 0!==arguments[1]&&arguments[1],n=t.getBoundingClientRect(),i=n.top,o=n.left,r=n.bottom,d=n.right,g=window,u=g.innerHeight,h=g.innerWidth;return e?(i>0&&i<u||r>0&&r<u)&&(o>0&&o<h||d>0&&d<h):i>=0&&o>=0&&r<=u&&d<=h};

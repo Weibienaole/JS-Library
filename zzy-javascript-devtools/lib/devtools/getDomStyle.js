@@ -1,1 +1,0 @@
-export default function(t,e){return getComputedStyle(t)["".concat(e)]}

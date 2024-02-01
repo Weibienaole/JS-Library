@@ -1,1 +1,0 @@
-export default function(){var n=navigator.userAgent;return-1<n.indexOf("Android")||-1<n.indexOf("Adr")}

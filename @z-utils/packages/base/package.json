@@ -1,1 +1,0 @@
-{"name":"@z-utils/base","version":"1.0.4","description":"zzy 工具库/base","main":"./cjs/index.js","module":"./es/index.js","sideEffects":false,"scripts":{"p":"npm publish"},"publishConfig":{"access":"public","registry":"https://registry.npmjs.org/"},"keywords":["z-utils","zzy"],"license":"MIT","author":{"name":"zzy","email":"weibienaole@163.com"},"engines":{"node":">=18.0.0"}}

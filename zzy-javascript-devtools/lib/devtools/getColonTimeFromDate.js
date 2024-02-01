@@ -1,1 +1,0 @@
-export default function(t){return t.toTimeString().slice(0,8)}

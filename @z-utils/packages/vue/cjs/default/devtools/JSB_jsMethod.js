@@ -1,1 +1,0 @@
-"use strict";module.exports=function(e){return new Promise((function(i,n){if(!window.setupWebViewJavascriptBridge)return n("请先将 JSB_init 方法引入！");window.setupWebViewJavascriptBridge((function(n){n.registerHandler(e,(function(e){i(e)}))}))}))};

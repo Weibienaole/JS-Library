@@ -1,1 +1,0 @@
-"use strict";module.exports=function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:window;return{x:void 0!==e.pageXOffset?e.pageXOffset:e.scrollLeft,y:void 0!==e.pageYOffset?e.pageYOffset:e.scrollTop}};

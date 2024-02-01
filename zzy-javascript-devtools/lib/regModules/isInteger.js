@@ -1,1 +1,0 @@
-export default function(t){return/^[-+]?\d*$/.test(t)}

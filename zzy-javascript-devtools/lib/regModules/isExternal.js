@@ -1,1 +1,0 @@
-export default function(t){return/^(https?:|mailto:|tel:)/.test(t)}

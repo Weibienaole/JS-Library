@@ -1,1 +1,0 @@
-export default function(t){return/^[a-zA-Z]:\\(?:\w+\\?)*$/g.test(t)}

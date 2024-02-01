@@ -1,1 +1,0 @@
-var t=function(t){function e(t){return t<10?"0"+t:t}"string"==typeof t&&(t=parseInt(t));var n=new Date(t),r=n.getFullYear(),a=n.getMonth()+1,u=n.getDate(),g=n.getHours(),o=n.getMinutes(),s=n.getSeconds();return r+"-"+e(a)+"-"+e(u)+" "+e(g)+":"+e(o)+":"+e(s)};export{t as default};
